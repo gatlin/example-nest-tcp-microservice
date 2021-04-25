@@ -10,6 +10,7 @@ async function bootstrap() {
   const subscription = clientService.getHello().subscribe({
     next(x) {
       console.log(`got value: ${x}`);
+      clientService.ahoy();
     },
     error(err) {
       console.error(`something happened: ${err}`);

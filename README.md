@@ -15,7 +15,9 @@ $ npm run start:dev
 $ npx ts-node src/client
 ```
 
-You should see the following output in the client:
+The client will send both **request-response** and **event-based** messages:
+- a `getHello` *request* which expects an `Observable<string>` in return; and
+- an `ahoy` *event* which is broadcast to the server in its own namespace.
 
 ```bash
 $ npx ts-node src/client
@@ -26,7 +28,19 @@ got value: Hello, World!
 Shutting down ...
 ```
 
-The server should log some nominal message as well to commemorate the event.
+Meanwhile, the server should look something like:
+
+```bash
+$ npm run start:dev
+[5:51:23 PM] Found 0 errors. Watching for file changes.
+
+[Nest] 574201   - 04/25/2021, 5:51:23 PM   [NestFactory] Starting Nest application...
+[Nest] 574201   - 04/25/2021, 5:51:23 PM   [InstanceLoader] ServerModule dependencies initialized +24ms
+[Nest] 574201   - 04/25/2021, 5:51:23 PM   [NestMicroservice] Nest microservice successfully started +3ms
+Microservice is listening
+data: 
+"ahoy" was broadcasted from the client
+```
 
 The rest of this document is the auto-generated Nestjs documentation!
 

@@ -9,6 +9,10 @@ export class ClientService {
     @Inject(CLIENT_SERVICE_ID) private readonly client: ClientProxy
   ) {}
 
+  ahoy(): Observable<string> {
+    return this.client.emit<string>("ahoy", "the client");
+  }
+
   // this sends a message over TCP to the server
   getHello(): Observable<string> {
     return this.client.send<string>({ cmd: "getHello" }, "");
