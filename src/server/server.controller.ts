@@ -7,16 +7,16 @@ import { Observable } from "rxjs";
 export class ServerController {
   constructor(private readonly appService: ServerService) {}
 
-  @EventPattern("ahoy")
+  @EventPattern("EvtAhoy")
   async handleAhoy(matey: string) {
     this.appService.ahoy(matey);
   }
 
-  @MessagePattern({ cmd: "getHello" })
+  @MessagePattern("CmdHello")
   getHello(data: string): Observable<string> {
     console.log(`data: ${data}`);
     const obs = new Observable<string>((subscriber) => {
-      subscriber.next(this.appService.getHello());
+      subscriber.next(this.appService.hello());
       subscriber.complete();
     });
     return obs;

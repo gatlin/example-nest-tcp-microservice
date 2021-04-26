@@ -3,10 +3,10 @@ import { Injectable } from "@nestjs/common";
 @Injectable()
 export class ServerService {
   ahoy(matey: string) {
-    console.log(`"ahoy" was broadcasted from ${matey}`);
+    console.log(`"ahoy" broadcast from ${matey}`);
   }
 
-  getHello(): string {
-    return "Hello, World!";
+  hello(): string {
+    return "Hello from the server!";
   }
 }
